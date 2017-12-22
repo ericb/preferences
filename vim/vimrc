@@ -47,11 +47,14 @@ filetype plugin indent on    " required
 
 colorscheme molokai
 syntax enable
+highlight Normal guifg=none guibg=none ctermbg=none
+highlight NonText guifg=none guibg=none ctermbg=none
 
 :set number
 :set showcmd
 :set cursorline
 :set noswapfile
+:set wrap!
 :set backspace=indent,eol,start
 
 " Set no max file limit
@@ -61,7 +64,10 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_working_path_mode = 0
 
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" Ignore these files for fuzzy matchingset
+set wildignore=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*/__pycache__/*,*/rcra/pg/*,*/kube-config/*,*/node_modules/*
+
+" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " Indentation (Filetype)
 setlocal expandtab
@@ -70,7 +76,9 @@ setlocal softtabstop=2
 setlocal tabstop=2
 autocmd BufNewFile,BufRead *.vue set syntax=html filetype=html
 autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType css setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType json setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
+
